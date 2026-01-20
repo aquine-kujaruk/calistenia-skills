@@ -27,6 +27,16 @@ export const SkillCard = ({ skill, progress, bestRecord, onUnlock, onDowngrade }
                 )}
             </div>
 
+            {currentLevel.img && (
+                <div className="w-full h-32 bg-slate-950 border-b border-slate-800/50 flex items-center justify-center overflow-hidden">
+                    <img
+                        src={currentLevel.img}
+                        alt={currentLevel.name}
+                        className="w-full h-full object-contain"
+                    />
+                </div>
+            )}
+
             <div className="p-4 flex flex-col gap-3">
                 <div className="flex justify-between items-center">
                     <span className="font-medium text-white text-lg">{currentLevel.name}</span>

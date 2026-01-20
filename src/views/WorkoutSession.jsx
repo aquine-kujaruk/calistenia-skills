@@ -137,7 +137,7 @@ export const WorkoutSession = () => {
                     <img
                         src={currentLevel.img}
                         alt={currentLevel.name}
-                        className="w-full h-full object-cover opacity-60"
+                        className="w-full h-full object-contain"
                     />
                     <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-950 to-transparent p-4">
                         <h3 className={`text-xs font-bold uppercase tracking-widest mb-1 ${skillData.color}`}>
