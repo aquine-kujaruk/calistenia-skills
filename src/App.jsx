@@ -13,7 +13,7 @@ function App() {
 }
 
 const DataProviderWithRouter = () => (
-  <Router>
+  <Router basename={import.meta.env.BASE_URL}>
     <AppDataProvider>
       <Routes>
         <Route path="/" element={<MainLayout />}>
