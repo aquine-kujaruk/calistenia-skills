@@ -1,10 +1,11 @@
 import React from 'react';
 import { Award, RotateCcw, Unlock } from 'lucide-react';
 
-export const SkillCard = ({ skill, progress, onUnlock, onDowngrade }) => {
+export const SkillCard = ({ skill, progress, bestRecord, onUnlock, onDowngrade }) => {
     const currentLevelIdx = progress[skill.id];
     const currentLevel = skill.levels[currentLevelIdx];
     const isMax = currentLevelIdx >= skill.levels.length - 1;
+    const canUnlock = bestRecord >= currentLevel.target;
 
     return (
         <div className="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden">
@@ -18,6 +19,12 @@ export const SkillCard = ({ skill, progress, onUnlock, onDowngrade }) => {
                         <p className="text-xs text-slate-400">Nivel {currentLevelIdx + 1}/{skill.levels.length}</p>
                     </div>
                 </div>
+                {bestRecord > 0 && (
+                    <div className="text-right">
+                        <p className="text-[10px] text-slate-500 uppercase font-bold">Mejor Marca</p>
+                        <p className="text-sm font-mono text-emerald-400">{bestRecord}{currentLevel.unit}</p>
+                    </div>
+                )}
             </div>
 
             <div className="p-4 flex flex-col gap-3">
@@ -40,8 +47,9 @@ export const SkillCard = ({ skill, progress, onUnlock, onDowngrade }) => {
                     </button>
                     <button
                         onClick={() => onUnlock(skill.id)}
-                        disabled={isMax}
-                        className={`flex-1 py-2 text-xs font-medium rounded flex justify-center items-center gap-1 transition-colors disabled:opacity-30 ${isMax ? 'text-slate-500' : 'text-emerald-400 hover:bg-emerald-950/30'}`}
+                        disabled={isMax || !canUnlock}
+                        className={`flex-1 py-2 text-xs font-medium rounded flex justify-center items-center gap-1 transition-colors disabled:opacity-30 ${isMax || !canUnlock ? 'text-slate-500' : 'text-emerald-400 hover:bg-emerald-950/30'}`}
+                        title={!canUnlock ? `Necesitas alcanzar ${currentLevel.target}${currentLevel.unit} para desbloquear` : ''}
                     >
                         {isMax ? 'Maestría' : 'Desbloquear'} <Unlock size={14} />
                     </button>

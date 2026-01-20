@@ -6,7 +6,7 @@ import { SKILLS_DATA } from '../data/skills';
 import { SkillCard } from '../components/SkillCard';
 
 export const Dashboard = () => {
-    const { progress, updateLevel, history, isLoading } = useAppData();
+    const { progress, updateLevel, history, isLoading, getBestRecord } = useAppData();
     const navigate = useNavigate();
 
     if (isLoading) return <div className="p-6 text-center text-slate-500 animate-pulse">Cargando perfil G-FORCE...</div>;
@@ -49,15 +49,21 @@ export const Dashboard = () => {
                     <span className="text-[10px] text-slate-500">Gestiona tu nivel aquí</span>
                 </div>
 
-                {Object.values(SKILLS_DATA).map((skill) => (
-                    <SkillCard
-                        key={skill.id}
-                        skill={skill}
-                        progress={progress}
-                        onUnlock={() => handleLevelChange(skill.id, 'up')}
-                        onDowngrade={() => handleLevelChange(skill.id, 'down')}
-                    />
-                ))}
+                {Object.values(SKILLS_DATA).map((skill) => {
+                    const currentLevelId = skill.levels[progress[skill.id]].id;
+                    const best = getBestRecord(skill.id, currentLevelId);
+
+                    return (
+                        <SkillCard
+                            key={skill.id}
+                            skill={skill}
+                            progress={progress}
+                            bestRecord={best}
+                            onUnlock={() => handleLevelChange(skill.id, 'up')}
+                            onDowngrade={() => handleLevelChange(skill.id, 'down')}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

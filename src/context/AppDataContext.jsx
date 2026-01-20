@@ -75,13 +75,31 @@ export const AppDataProvider = ({ children }) => {
         API.saveProgress(newProgress);
     };
 
+    const getBestRecord = (skillId, levelId) => {
+        let max = 0;
+        history.forEach(log => {
+            const exercise = log.exercises[skillId];
+            if (exercise && exercise.levelId === levelId) {
+                const sets = Array.isArray(exercise.sets)
+                    ? exercise.sets.map(s => parseInt(s)).filter(s => !isNaN(s))
+                    : [];
+                if (sets.length > 0) {
+                    const sessionMax = Math.max(...sets);
+                    if (sessionMax > max) max = sessionMax;
+                }
+            }
+        });
+        return max;
+    };
+
     return (
         <AppDataContext.Provider value={{
             progress,
             history,
             isLoading,
             addWorkoutLog,
-            updateLevel
+            updateLevel,
+            getBestRecord
         }}>
             {children}
         </AppDataContext.Provider>
