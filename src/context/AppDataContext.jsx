@@ -78,8 +78,11 @@ export const AppDataProvider = ({ children }) => {
     const getBestRecord = (skillId, levelId) => {
         let max = 0;
         history.forEach(log => {
-            const exercise = log.exercises[skillId];
-            if (exercise && exercise.levelId === levelId) {
+            const exercise = log.exercises?.[skillId];
+            // Match by levelId (standard) or fallback to levelName if levelId is missing (from old GAS versions)
+            const isMatch = exercise && (exercise.levelId === levelId || (!exercise.levelId && exercise.levelName === levelId));
+
+            if (isMatch) {
                 const sets = Array.isArray(exercise.sets)
                     ? exercise.sets.map(s => parseInt(s)).filter(s => !isNaN(s))
                     : [];
