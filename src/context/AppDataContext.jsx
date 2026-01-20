@@ -14,6 +14,7 @@ export const AppDataProvider = ({ children }) => {
     });
     const [history, setHistory] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const hasLoaded = React.useRef(false);
 
     // Load initial data
     useEffect(() => {
@@ -36,7 +37,6 @@ export const AppDataProvider = ({ children }) => {
                 if (cloudData) {
                     if (cloudData.progress) {
                         setProgress(cloudData.progress);
-                        // Update local cache
                         localStorage.setItem('cali_progress', JSON.stringify(cloudData.progress));
                     }
                     if (cloudData.history && Array.isArray(cloudData.history)) {
@@ -49,12 +49,14 @@ export const AppDataProvider = ({ children }) => {
             }
 
             setIsLoading(false);
+            hasLoaded.current = true;
         };
         loadData();
     }, []);
 
-    // Save to LocalStorage always
+    // Save to LocalStorage ONLY after first load is complete
     useEffect(() => {
+        if (!hasLoaded.current) return;
         localStorage.setItem('cali_progress', JSON.stringify(progress));
         localStorage.setItem('cali_history', JSON.stringify(history));
     }, [progress, history]);
