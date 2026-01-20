@@ -50,13 +50,13 @@ export const SKILLS_DATA = {
         color: "text-amber-400",
         bg: "bg-amber-500/10",
         levels: [
-            { id: 'vs_0a', name: "Tuck L-Sit", desc: "Rodillas al pecho, manos al suelo.", target: 30, unit: 's', img: "https://placehold.co/600x400/1e293b/fbbf24?text=Tuck+L-Sit" },
-            { id: 'vs_0b', name: "One-Leg L-Sit", desc: "Una pierna estirada, otra encogida.", target: 20, unit: 's', img: "https://placehold.co/600x400/1e293b/fbbf24?text=One-Leg+L-Sit" },
-            { id: 'vs_1', name: "L-Sit Sólido", desc: "Piernas a 90°.", target: 30, unit: 's', img: "https://placehold.co/600x400/1e293b/fbbf24?text=L-Sit" },
-            { id: 'vs_2', name: "Tucked V-Sit", desc: "Rodillas arriba.", target: 20, unit: 's', img: "https://placehold.co/600x400/1e293b/fbbf24?text=Tucked+V-Sit" },
-            { id: 'vs_3', name: "One-Legged V-Sit", desc: "Una pierna arriba.", target: 15, unit: 's', img: "https://placehold.co/600x400/1e293b/fbbf24?text=One-Leg+V-Sit" },
-            { id: 'vs_4', name: "Straddle V-Sit", desc: "Piernas abiertas.", target: 15, unit: 's', img: "https://placehold.co/600x400/1e293b/fbbf24?text=Straddle+V-Sit" },
-            { id: 'vs_5', name: "Full V-Sit", desc: "Cierre total.", target: 10, unit: 's', img: "https://placehold.co/600x400/1e293b/fbbf24?text=Full+V-Sit" }
+            { id: 'vs_0a', name: "Tuck L-Sit", desc: "Rodillas al pecho, manos al suelo.", target: 30, unit: 's', img: "https://i.ytimg.com/vi/K-c1xXiUWJE/maxresdefault.jpg" },
+            { id: 'vs_0b', name: "One-Leg L-Sit", desc: "Una pierna estirada, otra encogida.", target: 20, unit: 's', img: "https://i.ytimg.com/vi/Cfb5JgiMiwg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBQWYMmg2uCL8_hoUCQK1xWtawtmQ" },
+            { id: 'vs_1', name: "L-Sit Sólido", desc: "Piernas a 90°.", target: 30, unit: 's', img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLPxQrLRbQ_Nl7bk0OuoJdg6tyCtyCqXeveA&s" },
+            { id: 'vs_2', name: "Tucked V-Sit", desc: "Rodillas arriba.", target: 20, unit: 's', img: "https://assets.caliverse.app/eyJidWNrZXQiOiJjYWxpc3RoZW5pY3MtaGFubmliYWwiLCJrZXkiOiJpbWFnZXNcL2V4ZXJjaXNlc1wvLTVmYjE3YzQwMjQ2MWQucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjozNTAsImhlaWdodCI6MzUwLCJmaXQiOiJjb3ZlciJ9fX0=" },
+            { id: 'vs_3', name: "One-Legged V-Sit", desc: "Una pierna arriba.", target: 15, unit: 's', img: "https://i.ytimg.com/vi/CS4jOicT-dQ/hqdefault.jpg" },
+            { id: 'vs_4', name: "Straddle V-Sit", desc: "Piernas abiertas.", target: 15, unit: 's', img: "https://i.ytimg.com/vi/FAkSQE9cLDM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCv0QpF_ezUpvtKi_nGZU_meDPBqg" },
+            { id: 'vs_5', name: "Full V-Sit", desc: "Cierre total.", target: 10, unit: 's', img: "https://cdn.prod.website-files.com/674732398a7cbc934e4c2f56/6778790f201503e26fae04b9_675c0304dabf69891444be6b_Malin-Malle-in-Tuck-V-Sit-on-Paralletes-1024x576.webp" }
         ]
     }
 };
