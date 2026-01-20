@@ -21,27 +21,15 @@ export const AppDataProvider = ({ children }) => {
         const loadData = async () => {
             setIsLoading(true);
 
-            // 1. Load Local
-            const savedProgress = localStorage.getItem('cali_progress');
-            const savedHistory = localStorage.getItem('cali_history');
-
-            let initialProgress = savedProgress ? JSON.parse(savedProgress) : null;
-            let initialHistory = savedHistory ? JSON.parse(savedHistory) : [];
-
-            if (initialProgress) setProgress(initialProgress);
-            if (initialHistory) setHistory(initialHistory);
-
-            // 2. Load Cloud (Background sync)
+            // Load Cloud directly
             try {
                 const cloudData = await API.fetchState();
                 if (cloudData) {
                     if (cloudData.progress) {
                         setProgress(cloudData.progress);
-                        localStorage.setItem('cali_progress', JSON.stringify(cloudData.progress));
                     }
                     if (cloudData.history && Array.isArray(cloudData.history)) {
                         setHistory(cloudData.history);
-                        localStorage.setItem('cali_history', JSON.stringify(cloudData.history));
                     }
                 }
             } catch (e) {
@@ -54,12 +42,8 @@ export const AppDataProvider = ({ children }) => {
         loadData();
     }, []);
 
-    // Save to LocalStorage ONLY after first load is complete
-    useEffect(() => {
-        if (!hasLoaded.current) return;
-        localStorage.setItem('cali_progress', JSON.stringify(progress));
-        localStorage.setItem('cali_history', JSON.stringify(history));
-    }, [progress, history]);
+    // No auto-save to LocalStorage anymore. 
+    // Data is persisted only via direct API calls in updateLevel/addWorkoutLog.
 
     const addWorkoutLog = (log) => {
         setHistory(prev => [log, ...prev]);
